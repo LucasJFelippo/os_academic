@@ -1,7 +1,15 @@
-from src.globals import Process, Process_mutables
+from src.process_manager.pglobals import Process, Process_mutables
 
-
-
+def aging():
+    head = Process_mutables.process_list_head
+    
+    while head.next:
+        head.next.current_priority += 0.5
 
 def schedule():
-    pass
+    head = Process_mutables.process_list_head
+
+    highest = head
+
+    while head.next:
+        pass
