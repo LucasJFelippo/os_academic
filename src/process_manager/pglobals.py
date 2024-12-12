@@ -4,6 +4,13 @@ from enum import Enum
 import random
 
 
+class PSTATES(Enum):
+    NEW = 0
+    READY = 2
+    RUNNING = 4
+    WAITING = 8
+    TERMINATED = 16
+
 class PRIORITY_CLASS(Enum):
     REALTIME_PRIORITY = 10.0
     HIGH_PRIORITY = 5.0
@@ -25,17 +32,19 @@ class Process:
     pid: int
     name: str
 
-    priority_class: PRIORITY_CLASS
-    user_priority_class: USER_PRIORITY_CLASS
+    pc: int = 0
+
+    priority_class: PRIORITY_CLASS = PRIORITY_CLASS.NORMAL_PRIORITY
+    user_priority_class: USER_PRIORITY_CLASS = USER_PRIORITY_CLASS.NORMAL_USER_PRIORITY
     priority: float
     current_priority: float
+
+    state: PSTATES = PSTATES.NEW
 
     next: Process
     previous: Process
 
     last_time_cpu: float
-
-    pc: int = 0
 
 
 class Process_mutables:

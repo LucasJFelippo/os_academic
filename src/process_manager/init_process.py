@@ -16,6 +16,8 @@ def init_processes():
     Process_mutables.process_list_tail = os_process
     Process_mutables.process_count += 1
 
+    Process_mutables
+
     for i in range(1,11):
 
         Process_mutables.create_process(str(i))
